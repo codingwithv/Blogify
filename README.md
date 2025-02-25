@@ -1,87 +1,66 @@
-```markdown
-# Blog Backend
+# Blog Application
 
-This is the backend for the Blog application. It is built using Spring Boot and provides a RESTful API for managing blog posts, comments, and user authentication.
+This is a Spring Boot application for a blogging platform. It provides various endpoints to manage blog posts, comments, and users.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Java 17 or later
-- Maven 3.6.3 or later
-- PostgreSQL or any other relational database
+- Java 11 or higher
+- Maven
+- Spring Boot
 
 ### Installation
 
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/vivekumar4/blog-backend.git
-    cd blog-backend
+    ```bash
+    git clone https://github.com/yourusername/blog.git
     ```
-
-2. Update the database configuration in `src/main/resources/application.properties`:
-    ```properties
-    spring.datasource.url=jdbc:postgresql://localhost:5432/blog
-    spring.datasource.username=your_username
-    spring.datasource.password=your_password
-    spring.jpa.hibernate.ddl-auto=update
+2. Navigate to the project directory:
+    ```bash
+    cd blog
     ```
-
 3. Build the project:
-    ```sh
+    ```bash
     mvn clean install
     ```
 
-4. Run the application:
-    ```sh
-    mvn spring-boot:run
-    ```
+### Running the Application
 
-5. Access the Swagger UI for API documentation:
-    [http://localhost:4000/swagger-ui/index.html](http://localhost:4000/swagger-ui/index.html)
+To run the application, use the following command:
+```bash
+mvn spring-boot:run
+```
+
+The application will start on `http://localhost:4000`.
 
 ## API Endpoints
 
-### Authentication
+You can access the API documentation and test the endpoints using Swagger UI:
+[Swagger UI](http://localhost:4000/swagger-ui/index.html#)
 
-- **POST /api/v1/auth/register**: Register a new user
-- **POST /api/v1/auth/login**: Authenticate a user and get a JWT token
+### Blog Posts
 
-### Users
-
-- **GET /api/v1/users**: Get a list of all users
-- **GET /api/v1/users/{id}**: Get details of a specific user
-- **PUT /api/v1/users/{id}**: Update a user's details
-- **DELETE /api/v1/users/{id}**: Delete a user
-
-### Posts
-
-- **GET /api/v1/posts**: Get a list of all posts
-- **GET /api/v1/posts/{id}**: Get details of a specific post
-- **POST /api/v1/posts**: Create a new post
-- **PUT /api/v1/posts/{id}**: Update a post
-- **DELETE /api/v1/posts/{id}**: Delete a post
+- `GET /api/posts` - Retrieve all blog posts
+- `GET /api/posts/{id}` - Retrieve a specific blog post by ID
+- `POST /api/posts` - Create a new blog post
+- `PUT /api/posts/{id}` - Update an existing blog post by ID
+- `DELETE /api/posts/{id}` - Delete a blog post by ID
 
 ### Comments
 
-- **GET /api/v1/comments**: Get a list of all comments
-- **GET /api/v1/comments/{id}**: Get details of a specific comment
-- **POST /api/v1/comments**: Create a new comment
-- **PUT /api/v1/comments/{id}**: Update a comment
-- **DELETE /api/v1/comments/{id}**: Delete a comment
+- `GET /api/posts/{postId}/comments` - Retrieve all comments for a specific blog post
+- `POST /api/posts/{postId}/comments` - Add a comment to a specific blog post
+- `DELETE /api/posts/{postId}/comments/{commentId}` - Delete a comment by ID
 
-## Security
+### Users
 
-The application uses JWT for securing the endpoints. To access the secured endpoints, you need to include the JWT token in the `Authorization` header of your requests.
-
-Example:
-```
-Authorization: Bearer <your_jwt_token>
-```
+- `GET /api/users` - Retrieve all users
+- `GET /api/users/{id}` - Retrieve a specific user by ID
+- `POST /api/users` - Create a new user
+- `PUT /api/users/{id}` - Update an existing user by ID
+- `DELETE /api/users/{id}` - Delete a user by ID
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-This `README.md` file provides an overview of the project, installation instructions, and details about the available API endpoints.
